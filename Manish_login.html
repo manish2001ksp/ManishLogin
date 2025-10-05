@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Glassmorphism Login</title>
+  <style>
+    :root{
+      --bg1:#0f1724; /* dark navy */
+      --accent: rgba(255,255,255,0.08);
+      --glass: rgba(255,255,255,0.06);
+      --glass-strong: rgba(255,255,255,0.12);
+      --glass-border: rgba(255,255,255,0.18);
+      --accent-2: rgba(99,102,241,0.2);
+      --glass-text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.65);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    body{
+      background: radial-gradient(1500px 800px at 10% 10%, rgba(99,102,241,0.12), transparent 10%),
+                  radial-gradient(1200px 700px at 90% 90%, rgba(16,185,129,0.06), transparent 12%),
+                  var(--bg1);
+      display:flex;align-items:center;justify-content:center;padding:40px;color:var(--glass-text);
+    }
+
+    /* center card */
+    .login-wrap{
+      width:100%;max-width:980px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;
+    }
+
+    /* left artwork/marketing */
+    .hero{
+      padding:36px;border-radius:18px;position:relative;overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px) saturate(130%);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+    .hero h1{font-size:34px;margin:6px 0 8px}
+    .hero p{color:var(--muted);line-height:1.6}
+    .glass-card{
+      border-radius:16px;padding:18px;background:linear-gradient(180deg,var(--glass), rgba(255,255,255,0.02));
+      border:1px solid var(--glass-border);backdrop-filter: blur(10px) saturate(140%);
+    }
+
+    /* subtle animated circles behind */
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:0.7}
+    .hero::before{width:420px;height:420px;right:-120px;top:-70px;background:linear-gradient(135deg, rgba(99,102,241,0.25), rgba(79,70,229,0.12));}
+    .hero::after{width:320px;height:320px;left:-80px;bottom:-100px;background:linear-gradient(135deg, rgba(16,185,129,0.16), rgba(20,184,166,0.06));}
+
+    /* form column */
+    .form-col{display:flex;flex-direction:column;gap:14px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#6366f1,#06b6d4);display:flex;align-items:center;justify-content:center;color:white;font-weight:700}
+
+    form{padding:28px;border-radius:16px;background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015)); border:1px solid var(--glass-border);backdrop-filter: blur(8px);}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+    .input{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--glass-text);outline:none;font-size:15px}
+    .input:focus{box-shadow:0 6px 18px rgba(99,102,241,0.08);border-color:var(--glass-strong)}
+
+    .row{display:flex;gap:12px}
+    .small{font-size:13px;color:var(--muted)}
+
+    .btn{
+      width:100%;padding:12px 14px;border-radius:12px;border:none;cursor:pointer;font-weight:600;font-size:15px;color:rgba(3,7,18,0.98);
+      background:linear-gradient(90deg,#60a5fa,#06b6d4);
+      box-shadow: 0 8px 24px rgba(6,182,212,0.12);
+    }
+
+    .socials{display:flex;gap:8px;align-items:center}
+    .social{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.05);background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);display:flex;align-items:center;justify-content:center;gap:8px}
+
+    .muted-center{color:var(--muted);font-size:13px;text-align:center}
+    .links{display:flex;justify-content:space-between;align-items:center}
+
+    .error{color:#ff7b7b;font-size:13px;margin-top:6px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .login-wrap{grid-template-columns:1fr;}
+      .hero::before,.hero::after{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+
+    <div class="hero glass-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;"> 
+        <div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="logo">LF</div>
+            <div>
+              <div style="font-weight:700;font-size:18px">Glass Login</div>
+              <div style="font-size:13px;color:var(--muted)">Modern minimal login UI</div>
+            </div>
+          </div>
+        </div>
+        <div style="color:var(--muted);font-size:13px">v1.0</div>
+      </div>
+
+      <h1 style="margin-top:28px">Welcome back 👋</h1>
+      <p>Sign in to access your dashboard. This glassmorphism-styled login is responsive and includes basic validation.</p>
+
+      <div style="display:flex;gap:12px;margin-top:18px">
+        <div class="glass-card" style="flex:1">
+          <div style="font-size:13px;color:var(--muted)">Last signed in</div>
+          <div style="font-weight:600;margin-top:6px">You — 2 days ago</div>
+        </div>
+        <div class="glass-card" style="width:140px;text-align:center">
+          <div style="font-size:13px;color:var(--muted)">Status</div>
+          <div style="margin-top:6px;font-weight:700;color:#86efac">Active</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-col">
+      <form id="loginForm" novalidate>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+          <div style="font-weight:700;font-size:18px">Sign in</div>
+          <div style="font-size:13px;color:var(--muted)">New? <a href="#" style="color:inherit;text-decoration:underline;">Create account</a></div>
+        </div>
+
+        <div style="margin-bottom:14px">
+          <label for="email">Email or username</label>
+          <input id="email" class="input" type="text" placeholder="you@company.com or username" autocomplete="username">
+          <div id="emailErr" class="error" style="display:none">Please enter a valid email or username.</div>
+        </div>
+
+        <div style="margin-bottom:8px">
+          <label for="password">Password</label>
+          <div style="position:relative">
+            <input id="password" class="input" type="password" placeholder="Your password" autocomplete="current-password">
+            <button type="button" id="togglePw" title="Show/Hide" style="position:absolute;right:8px;top:8px;background:none;border:none;color:var(--muted);cursor:pointer">Show</button>
+          </div>
+          <div id="pwErr" class="error" style="display:none">Password must be at least 6 characters.</div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin:12px 0">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px"><input id="remember" type="checkbox"> Remember me</label>
+          <a href="#" style="font-size:13px;color:var(--muted);text-decoration:underline">Forgot password?</a>
+        </div>
+
+        <button class="btn" type="submit">Sign in</button>
+
+        <div style="margin:12px 0;display:flex;align-items:center;gap:12px">
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.03)"></div>
+          <div style="font-size:13px;color:var(--muted);white-space:nowrap">Or sign in with</div>
+          <div style="flex:1;height:1px;background:rgba(255,255,255,0.03)"></div>
+        </div>
+
+        <div style="display:flex;gap:10px">
+          <button type="button" class="social">Google</button>
+          <button type="button" class="social">GitHub</button>
+          <button type="button" class="social">LinkedIn</button>
+        </div>
+
+        <div style="margin-top:12px" class="muted-center">By signing in you agree to our <a href="#" style="color:inherit;text-decoration:underline">Terms</a> and <a href="#" style="color:inherit;text-decoration:underline">Privacy</a>.</div>
+      </form>
+
+      <div style="text-align:center;color:var(--muted);margin-top:6px;font-size:13px">Need help? <a href="#" style="color:inherit;text-decoration:underline">Contact support</a></div>
+    </div>
+
+  </div>
+
+  <script>
+    // Basic client-side validation and UI behaviour
+    (function(){
+      const form = document.getElementById('loginForm');
+      const email = document.getElementById('email');
+      const password = document.getElementById('password');
+      const emailErr = document.getElementById('emailErr');
+      const pwErr = document.getElementById('pwErr');
+      const toggle = document.getElementById('togglePw');
+
+      toggle.addEventListener('click', ()=>{
+        if(password.type === 'password'){ password.type = 'text'; toggle.textContent = 'Hide'; }
+        else { password.type = 'password'; toggle.textContent = 'Show'; }
+      });
+
+      function isEmailOrUsername(v){
+        if(!v) return false;
+        // very simple checks: either username (alphanumeric 3-20) or an email-like
+        const userRe = /^[a-zA-Z0-9._-]{3,20}$/;
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        return userRe.test(v) || emailRe.test(v);
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        let ok = true;
+        if(!isEmailOrUsername(email.value.trim())){ emailErr.style.display='block'; ok = false } else { emailErr.style.display='none' }
+        if(password.value.length < 6){ pwErr.style.display='block'; ok = false } else { pwErr.style.display='none' }
+
+        if(!ok) return;
+
+        // Simulate a login request (here we just animate success)
+        const btn = form.querySelector('.btn');
+        btn.disabled = true; btn.textContent = 'Signing in...';
+
+        setTimeout(()=>{
+          btn.textContent = 'Signed in ✓';
+          btn.style.background = 'linear-gradient(90deg,#34d399,#10b981)';
+        },1000);
+
+        // In real app: send fetch POST to server with credentials
+      });
+
+      // small UX: press enter on email moves to password
+      email.addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); password.focus(); } });
+
+    })();
+  </script>
+</body>
+</html>
